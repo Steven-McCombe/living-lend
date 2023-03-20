@@ -19,6 +19,7 @@ import {
   MDBInput,
   MDBRow,
   MDBTypography,
+  MDBNavbarLink
 } from "mdb-react-ui-kit";
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
@@ -87,6 +88,10 @@ const Cart = () => {
           <MDBCol>
             <MDBCard className="shopping-cart" style={{ borderRadius: "15px" }}>
               <MDBCardBody className="text-black">
+                      <a href="" className="float-end text-black">
+                        <MDBIcon onClick={toggleCart} />
+                        Close
+                      </a>
                 <MDBRow>
                   <MDBCol lg="14" className="px-5 py-4">
                     <MDBTypography
@@ -113,7 +118,7 @@ const Cart = () => {
                       style={{ backgroundColor: "#e1f5fe" }}
                     >
                       <MDBTypography tag="h5" className="fw-bold mb-0">
-                        Total:
+                        Total Per Month:
                       </MDBTypography>
                       <MDBTypography tag="h5" className="fw-bold mb-0">
                         ${calculateTotal()}
@@ -121,14 +126,10 @@ const Cart = () => {
                     </div>
                   </MDBCol>
                     {Auth.loggedIn() ? (
-                      <MDBBtn color = "warning" onClick={submitCheckout}>Checkout</MDBBtn>
+                      <MDBNavbarLink href='/checkout'>Checkout</MDBNavbarLink>
                     ) : (
                       <span>(log in to check out)</span>
                     )} 
-                        <a href="">
-                          <MDBIcon onClick={toggleCart} fas icon="angle-left me-2" />
-                          Back to shopping
-                        </a>
                 </MDBRow>
               </MDBCardBody>
             </MDBCard>

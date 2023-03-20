@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {MDBBtn} from 'mdb-react-ui-kit';
-import Cart from '../components/Cart';
+import Cart from '../components/CartSide';
 
 export default function Home() {
 

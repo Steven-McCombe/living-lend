@@ -13,7 +13,7 @@ import {
 } from 'mdb-react-ui-kit';
 //importing auth. Display a different nav bar if user is logged in.
 import Auth from "../../utils/auth";
-import Cart from '../Cart';
+import Cart from '../CartSide';
 import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART, UPDATE_CART_COUNT } from '../../utils/actions';
 

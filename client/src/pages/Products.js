@@ -1,7 +1,7 @@
 import react from 'react'
 import CategoryMenu from '../components/CategoryMenu'
 import ProductList from '../components/ProductList'
-import Cart from '../components/Cart'
+import Cart from '../components/CartSide'
 export default function Products() {
     return (
     <div>

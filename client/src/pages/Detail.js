@@ -12,7 +12,7 @@ import {
     MDBBtn,
     MDBRipple,
   } from "mdb-react-ui-kit";
-import Cart from '../components/Cart';
+import Cart from '../components/CartSide';
 import { useStoreContext } from '../utils/GlobalState';
 import {
   REMOVE_FROM_CART,

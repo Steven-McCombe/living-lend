@@ -9,7 +9,8 @@ import {
   UPDATE_CURRENT_CATEGORY,
   CLEAR_CART,
   UPDATE_CART_COUNT,
-  TOGGLE_CART
+  TOGGLE_CART,
+  DELETE_PRODUCT
 } from "./actions";
 
 export const reducer = (state, action) => {
@@ -85,10 +86,16 @@ export const reducer = (state, action) => {
         ...state,
         currentCategory: action.currentCategory
       }
+      case DELETE_PRODUCT:
+      return {
+        ...state,
+        products: state.products.filter(product => product._id !== action.productId)
+      }
 
     default:
       return state;
   }
+
 };
 
 export function useProductReducer(initialState) {

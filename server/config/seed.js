@@ -2,7 +2,9 @@ const db = require('./connection');
 const { Category, Product, User, } = require('../models');
 
 db.once('open', async () => {
-    await db.dropDatabase();
+    await Category.deleteMany({});
+    await Product.deleteMany({});
+    await User.deleteMany({});
     const categories = await Category.create([
         { name: 'Living Room' },
         { name: 'Dining Room' },
@@ -127,7 +129,8 @@ db.once('open', async () => {
             password: 'janedoe1',
             orders: [
                 {
-                    products: [products[0].id, products[3].id, products[5].id]
+                    orderLength: 7,
+                    products: [products[0].id, products[3].id, products[5].id, products[7].id]
                 }
             ] 
             

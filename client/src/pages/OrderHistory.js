@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries';
-import Cart from '../components/Cart'
+import Cart from '../components/CartSide'
 
 
 function OrderHistory() {

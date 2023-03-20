@@ -6,8 +6,11 @@ import Products from "./pages/Products"
 import OrderHistory from "./pages/OrderHistory"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
+import Checkout from "./pages/Checkout"
 import NotFound from "./pages/NotFound"
 import Detail from './pages/Detail';
+import Success from './pages/Success';
+import Dashboard from './pages/Dashboard';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   ApolloClient,
@@ -18,7 +21,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { StoreProvider } from './utils/GlobalState';
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: '/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -64,9 +67,21 @@ function App() {
               path="/Signup" 
               element={<Signup />} 
             />
+            <Route
+                path="/checkout"
+                element={<Checkout />}
+                />
             <Route 
                 path="/products/:id" 
                 element={<Detail />} 
+              />
+            <Route 
+                path="/success" 
+                element={<Success/>} 
+              />
+            <Route 
+                path="/dashboard" 
+                element={<Dashboard />} 
               />
             <Route 
               path="*" 

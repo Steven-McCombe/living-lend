@@ -1,3 +1,5 @@
+const { AuthenticationError } = require('apollo-server-express');
+
 const jwt = require('jsonwebtoken');
 
 
@@ -9,31 +11,33 @@ module.exports = {
   authMiddleware: function ({ req }) {
     // allows token to be sent via req.body, req.query, or headers
     let token = req.body.token || req.query.token || req.headers.authorization;
-
+  
     // ["Bearer", "<tokenvalue>"]
     if (req.headers.authorization) {
       token = token.split(' ').pop().trim();
     }
-
+  
     if (!token) {
-      return req;
+      return { req };
     }
-
+  
     try {
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data;
     } catch {
       console.log('Invalid token');
     }
-
-    return req;
+  
+    return { req };
   },
 
-  adminAuthMiddleware: function (req, res, next) {
+  adminAuthMiddleware: function (context) {
+    const { req } = context;
+    console.log("USER:" + req.user)
+    console.log("isAdmin:" + req.user.isAdmin)
     if (!req.user || !req.user.isAdmin) {
-      return res.status(401).send('Unauthorized');
+      throw new AuthenticationError('Unauthorized');
     }
-    next();
   },
   signToken: function ({ firstName, email, _id, isAdmin }) {
     const payload = { firstName, email, _id, isAdmin };
